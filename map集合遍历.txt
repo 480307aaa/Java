@@ -1,0 +1,45 @@
+package com.yonyoucloud.ec.sns.ticket.web.rest;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class Test {
+    public static void main(String args[]) {
+        Map<String, String> map = new HashMap<>();
+        map.put("1", "bob");
+        map.put("2", "lisa");
+        map.put("3", "tom");
+        //方式一:键值都需要
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            System.out.println("方式一：当key和value都需要的时候" + key + "-" + value);
+        }
+        System.out.println("----------------");
+        //方式二:遍历map中的键和值
+        for (String key : map.keySet()) {
+            System.out.print(key);
+        }
+        //遍历值
+        for (String value : map.values()) {
+            System.out.println(value);
+        }
+        System.out.println("----------------");
+        //方式三:使用迭代器
+        Iterator entries = map.entrySet().iterator();
+        while (entries.hasNext()) {
+            Map.Entry entry = (Map.Entry) entries.next();
+            System.out.println("key:" + entry.getKey() + "," + "value:" + entry.getValue());
+        }
+        System.out.println("----------------");
+        //方法四:
+        Set<String> keys = map.keySet();
+        for (String key : keys) {
+            String value = map.get(key);
+            System.out.println("key:" + key + "," + "value:" + value);
+        }
+
+    }
+}
