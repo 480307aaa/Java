@@ -1,0 +1,8 @@
+String mobileRegExp = "^((13[0-9])|(15[^4])|(18[0,1,2,3,5-9])|(17[0-8])|(147))\\d{8}$";
+Pattern p = Pattern.compile(mobileRegExp);
+Matcher m = p.matcher(extendInfo);
+
+if (!m.matches()) {
+
+    throw new BusinessException(ErrorType.SYS_VALIDATE_ERROR, "请传递正确的大陆手机号");
+}
