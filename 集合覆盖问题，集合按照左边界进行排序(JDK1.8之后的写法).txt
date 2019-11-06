@@ -1,0 +1,1 @@
+ Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
