@@ -42,6 +42,45 @@ static class Node<K,V> implements Map.Entry<K,V> {
             return false;
         }
     }
-	
+    
+    
+HashMap常见题目：
+
+1.HashMap的底层数据结构？
+答案：
+数组+链表
+
+HashMap的存取原理？
+答案：Java8之前：头插法，新值插入链表头，旧值依次后移
+      Java8：尾插法(因为头插法容易出现环，循环引用)
+Java7和Java8的区别？
+
+为啥会线程不安全？
+答案：全部方法都没有做同步，多线程环境下容易出现线程不安全
+
+有什么线程安全的类代替么?
+答案：Hashtable(性能低，不考虑)、一般用ConcurrentHashMap
+
+默认初始化大小是多少？为啥是这么多？为啥大小都是2的幂？
+答案：初始大小为16或者是2的幂指数  为了均匀分布，16的二进制是1111，这样index=hashcode&(length-1),元素的位置是否均匀分布取决于hashcode方法
+
+HashMap的扩容方式？负载因子是多少？为什是这么多？
+答案：初始大小+负载因子，hashMap扩容为2倍扩容，负载因子为0.75，一共分为两部分：
+     1. 扩容：创建一个新的Entry空数组，长度是原数组的2倍。
+     2. ReHash：遍历原Entry数组，把所有的Entry重新Hash到新数组。
+      为啥是0.75，折中考虑把，符合泊松分布，太小，频繁扩容，占内存，但是每一个entry元素少，检索效率高
+      太大，每个entry上的元素多，检索效率低
+
+HashMap的主要参数都有哪些？
+答案：哈希值+键+值+下一个node
+ final int hash;
+        final K key;
+        V value;
+        Node<K,V> next;
+HashMap是怎么处理hash碰撞的？
+答案：链地址法，使用链表存储同一桶内的元素
+
+hash的计算规则？
+index=key.hashcode()&(n-1)
 
 
