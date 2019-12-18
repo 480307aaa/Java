@@ -1,0 +1,84 @@
+public enum SecurityType {
+
+    /**
+     * 公开
+     */
+
+    PUBLIC("1", "gk", "公开", 0),
+
+    INTERNAL("2", "nb", "内部", 1),
+
+    SECRET("3", "mm", "秘密", 2),
+
+    CONFIDENTIAL("4", "jm", "机密", 3);
+
+    private String id;
+
+    private String code;
+
+    private String name;
+
+    private Integer value;
+
+    SecurityType(String id, String code, String name, Integer value) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.value = value;
+    }
+
+
+    public String id() {
+        return id;
+    }
+
+    public String code() {
+        return code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
+
+    public static SecurityType getEnumTypeByValue(Integer securityTypeValue) {
+
+        for (SecurityType type : SecurityType.values()) {
+            if (type.getValue().equals(securityTypeValue)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
+    public static SecurityType getEnumTypeById(String id) {
+        for (SecurityType type : SecurityType.values()) {
+            if (type.id().equals(id)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
+    public static SecurityType getEnumTypeByCode(String code) {
+        for (SecurityType type : SecurityType.values()) {
+            if (type.code().equals(code)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
+    public static Map<Integer, String> listAllTypes() {
+        SecurityType[] types = SecurityType.values();
+        Map<Integer, String> map = new HashMap<>(types.length);
+        for (SecurityType type : types) {
+            map.put(type.getValue(), type.getName());
+        }
+        return map;
+    }
+}
